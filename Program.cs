@@ -1,6 +1,4 @@
-﻿using System.Numerics;
-
-namespace byte_deez_nuts;
+﻿namespace byte_deez_nuts;
 
 class Program
 {
@@ -43,7 +41,11 @@ class Program
 
     static string Binary(UInt16 number)
     {
-        string bin = Convert.ToString(number, 2).PadLeft(16, '0');
-        return "0b" + bin;
+        return "0b" + Convert.ToString(number, 2).PadLeft(16, '0');
+    }
+
+    static string Binary(UInt32 number)
+    {
+        return "0b" + Convert.ToString(number, 2).PadLeft(32, '0');
     }
 }
