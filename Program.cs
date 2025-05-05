@@ -4,6 +4,8 @@ public static class Program
 {
     public static void Main(string[] args)
     {
+        double x = 2.0;
+        Console.WriteLine(x.Ulp());
 
     }
 
