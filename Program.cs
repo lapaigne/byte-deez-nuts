@@ -1,8 +1,13 @@
 ﻿namespace byte_deez_nuts;
 
-class Program
+public static class Program
 {
-    static void Main(string[] args)
+    public static void Main(string[] args)
+    {
+
+    }
+
+    private static void RunSwojak()
     {
         List<string> results = new List<string>();
         while (true)
@@ -10,8 +15,8 @@ class Program
             byte[] bytes = Console.ReadLine().Split().Select(x => Convert.ToByte(x)).ToArray();
             try
             {
-                UInt16 encoded = SvoiakEncode(bytes);
-                results.Add(Binary(encoded));
+                UInt16 encoded = bytes.SwojakEncode();
+                results.Add(encoded.ToBinary());
             }
             catch
             {
@@ -19,33 +24,5 @@ class Program
             }
         }
         Console.WriteLine(string.Join("\n", results));
-
-    }
-
-    static UInt16 SvoiakEncode(byte[] numbers)
-    {
-        UInt16 result = 0;
-        if (numbers.Length != 4)
-        {
-            throw new ArgumentException("Wrong array length");
-        }
-
-        for (byte i = 0; i < 4; ++i)
-        {
-            if (numbers[i] > 16) { throw new ArgumentException($"number at {i} is out of range"); }
-            result += (UInt16)(1u << numbers[i]);
-        }
-
-        return result;
-    }
-
-    static string Binary(UInt16 number)
-    {
-        return "0b" + Convert.ToString(number, 2).PadLeft(16, '0');
-    }
-
-    static string Binary(UInt32 number)
-    {
-        return "0b" + Convert.ToString(number, 2).PadLeft(32, '0');
     }
 }
