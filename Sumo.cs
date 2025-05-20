@@ -30,6 +30,7 @@ public static class Sumo
 
     public static double InsertionSum(this List<double> numbers)
     {
+        // добавлять следующее число так, чтобы модуль суммы оставался минимальным
         double result = 0;
         return result;
     }

@@ -4,12 +4,25 @@ public static class Program
 {
     public static void Main(string[] args)
     {
-        double x = .1;
-        Console.WriteLine(x);
-
+        Console.WriteLine(Trigger.Cos(0.1f));
     }
 
-    private static void RunACos()
+    private static void OhOne()
+    {
+        double x = .1;
+        Int64 ix = BitConverter.DoubleToInt64Bits(x);
+        Console.WriteLine(x.ToString("F64"));
+        Console.WriteLine(ix.ToString("B64"));
+
+        double nx = x.NextAfter();
+        Int64 inx = BitConverter.DoubleToInt64Bits(nx);
+        Console.WriteLine(nx.ToString("F64"));
+        Console.WriteLine(inx.ToString("B64"));
+
+        Console.WriteLine((1 - Mathew.Ulp(1.0)).ToString("F64"));
+    }
+
+    private static void RunAcos()
     {
         var result = Trigger.Acos(1);
         Console.WriteLine(result.First());

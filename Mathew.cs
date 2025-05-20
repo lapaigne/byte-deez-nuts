@@ -2,11 +2,11 @@ namespace byte_deez_nuts;
 
 public static class Mathew
 {
-    public static int Beta = 2;
-    public static int P = 53;
-    public static int Pf = 24;
-    public static double U = 1.0 / (1UL << P);
-    public static float Uf = 1.0f / (1U << Pf);
+    public readonly static int Beta = 2;
+    public readonly static int P = 53;
+    public readonly static int Pf = 24;
+    public readonly static double U = 1.0 / (1UL << P);
+    public readonly static float Uf = 1.0f / (1U << Pf);
 
     public static double Gamma(int n)
     {
@@ -29,12 +29,17 @@ public static class Mathew
 
     public static float Ulp(this float x)
     {
-        // finish
+        // tbc
         if (float.IsNaN(x)) return float.NaN;
         if (float.IsInfinity(x)) return float.NaN;
         if (Math.Abs(x) == float.MaxValue) return (float)(UInt128.One << (127 - 23));
         if (Math.Abs(x) < float.MinValue) throw new NotImplementedException();
         if (Math.Abs(x) == 0.0f) throw new NotImplementedException();
         throw new NotImplementedException();
+    }
+
+    public static double NextAfter(this double number)
+    {
+        return double.BitIncrement(number);
     }
 }
