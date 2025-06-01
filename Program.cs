@@ -1,10 +1,10 @@
-﻿namespace byte_deez_nuts;
+﻿using byte_deez_nuts;
 
 public static class Program
 {
     public static void Main(string[] args)
     {
-        Console.WriteLine(Trigger.Cos(0.1f));
+        Exam.ComputePI();
     }
 
     private static void OhOne()
