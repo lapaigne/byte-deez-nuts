@@ -57,17 +57,23 @@ public static class Exam
         /*---*/
 
         f64 xError = x * U;
-        f64 x2Error = x2 * 2 * U / (1 - 2 * U);
-        f64 numError = numerators.Sum(a => Math.Abs(a)) * U;
+        f64 x2Error = x2 * 2 * U / (1 - 4 * U);
+
+        f64 numError = 0;
+        for (i32 i = 0; i < COUNT; ++i)
+        {
+            // ???
+            numError += Math.Abs(numerators[i]) * Gamma(i) * U;
+        }
+
         f64 denumError = denumerators.Sum(a => Math.Abs(a)) * U;
-        f64 roundError = U * absSum;
+        f64 roundError = absSum * U;
 
         f64 repError = xError + x2Error + numError + denumError + roundError;
 
         /*---*/
 
         f64 cutError = 1.0 / 33 * numerators.Last() * x2;
-        cutError += Ulp(cutError);
 
         /*---*/
 
@@ -90,10 +96,13 @@ public static class Exam
 
         f64 computed = 16 * x1Atan - 4 * x2Atan;
 
+        f64 finalErr = computed * 2 * U;
+        f64 error = x1Err + x2Err + finalErr;
+
         Console.WriteLine("Nums : 0.123456789abcdef0123456789abcdef");
         Console.WriteLine($"M.PI = {Math.PI.ToString("F64")}");
         Console.WriteLine($"PI   = {computed.ToString("F64")}");
-        Console.WriteLine($"Error: {x1Err + x2Err}");
+        Console.WriteLine($"Error: {error}");
     }
 
     public static f64 Gamma(i32 n)
@@ -111,7 +120,7 @@ public static class Exam
         return Math.Abs(nextValue - value);
     }
 
-    public static f64 PairwiseSum(this List<double> numbers)
+    public static f64 PairwiseSum(this List<f64> numbers)
     {
         if (numbers.Count == 0) { throw new ArgumentException("Empty collection"); }
 
