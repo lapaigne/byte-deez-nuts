@@ -1,10 +1,22 @@
 ﻿using byte_deez_nuts;
+using f64 = double;
 
 public static class Program
 {
     public static void Main(string[] args)
     {
-        Exam.ComputePI();
+        f64 a = 0.1;
+        Console.WriteLine($"{a.ToString("F64")}\n{a}");
+        Console.WriteLine(BitConverter.DoubleToInt64Bits(a).ToString("B64"));
+        /*
+         U = 2^-53
+        RN(a) = a/(1+delta)
+        (1+delta)*RN(a) = a
+        |RN(a)-a|=|RN(a)-(1+delta)RN(a)|=|RN(a)|*|1-1-delta|=|RN(a)||delta|<=|RN(a)|*U
+        delta <= U
+         */
+        Console.WriteLine(Mathew.U * a);
+        /*Exam.ComputePI();*/
     }
 
     private static void OhOne()
@@ -19,7 +31,7 @@ public static class Program
         Console.WriteLine(nx.ToString("F64"));
         Console.WriteLine(inx.ToString("B64"));
 
-        Console.WriteLine((1 - Mathew.Ulp(1.0)).ToString("F64"));
+        /*Console.WriteLine((1 - Mathew.Ulp(1.0)).ToString("F64"));*/
     }
 
     private static void RunAcos()
