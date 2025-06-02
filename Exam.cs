@@ -90,7 +90,7 @@ public static class Exam
 
         f64 computed = 16 * x1Atan - 4 * x2Atan;
 
-        Console.WriteLine("Nums : 0.123456789abcdef");
+        Console.WriteLine("Nums : 0.123456789abcdef0123456789abcdef");
         Console.WriteLine($"M.PI = {Math.PI.ToString("F64")}");
         Console.WriteLine($"PI   = {computed.ToString("F64")}");
         Console.WriteLine($"Error: {x1Err + x2Err}");

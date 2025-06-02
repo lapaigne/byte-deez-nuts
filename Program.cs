@@ -5,18 +5,7 @@ public static class Program
 {
     public static void Main(string[] args)
     {
-        f64 a = 0.1;
-        Console.WriteLine($"{a.ToString("F64")}\n{a}");
-        Console.WriteLine(BitConverter.DoubleToInt64Bits(a).ToString("B64"));
-        /*
-         U = 2^-53
-        RN(a) = a/(1+delta)
-        (1+delta)*RN(a) = a
-        |RN(a)-a|=|RN(a)-(1+delta)RN(a)|=|RN(a)|*|1-1-delta|=|RN(a)||delta|<=|RN(a)|*U
-        delta <= U
-         */
-        Console.WriteLine(Mathew.U * a);
-        /*Exam.ComputePI();*/
+        Exam.ComputePI();
     }
 
     private static void OhOne()
