@@ -1,3 +1,5 @@
+namespace joe_byten;
+
 public static class Sumo
 {
     public static double RecursiveSum(this List<double> numbers)

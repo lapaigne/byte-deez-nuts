@@ -99,8 +99,8 @@ public static class Exam
         f64 finalErr = computed * 2 * U;
         f64 error = x1Err + x2Err + finalErr;
 
-        Console.WriteLine("Nums : 0.123456789abcdef0123456789abcdef");
-        Console.WriteLine($"M.PI = {Math.PI.ToString("F64")}");
+        /*Console.WriteLine("Nums : 0.123456789abcdef0123456789abcdef");*/
+        /*Console.WriteLine($"M.PI = {Math.PI.ToString("F64")}");*/
         Console.WriteLine($"PI   = {computed.ToString("F64")}");
         Console.WriteLine($"Error: {error}");
     }
