@@ -1,7 +1,4 @@
-﻿using byte_deez_nuts;
-using f64 = double;
-
-public static class Program
+﻿public static class Program
 {
     public static void Main(string[] args)
     {

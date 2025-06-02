@@ -1,5 +1,3 @@
-namespace byte_deez_nuts;
-
 public static class Swojak
 {
     public static UInt16 SwojakEncode(this byte[] numbers)

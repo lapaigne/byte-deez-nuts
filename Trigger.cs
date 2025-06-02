@@ -1,5 +1,3 @@
-namespace byte_deez_nuts;
-
 public static class Trigger
 {
     public static IEnumerable<float> Acos(float value)

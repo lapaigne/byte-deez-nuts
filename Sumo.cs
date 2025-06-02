@@ -1,5 +1,3 @@
-namespace byte_deez_nuts;
-
 public static class Sumo
 {
     public static double RecursiveSum(this List<double> numbers)

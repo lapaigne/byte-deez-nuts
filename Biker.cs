@@ -1,5 +1,3 @@
-namespace byte_deez_nuts;
-
 public static class Biker
 {
     public static string ToBinary(this UInt16 number)

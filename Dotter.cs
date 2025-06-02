@@ -1,5 +1,3 @@
-namespace byte_deez_nuts;
-
 public static class Dotter
 {
     public static double Sin(double a)
