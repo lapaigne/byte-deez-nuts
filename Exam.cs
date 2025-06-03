@@ -13,7 +13,7 @@ public static class Exam
         f64[] numerators = new f64[COUNT];
         numerators[0] = x;
 
-        f64[] denominator = new f64[]
+        f64[] denominators = new f64[]
         {
             1.0,
             -1.0 / 3,
@@ -46,7 +46,7 @@ public static class Exam
 
         for (i32 i = 0; i < COUNT; ++i)
         {
-            f64 t = numerators[i] * denominator[i];
+            f64 t = numerators[i] * denominators[i];
             ts[i] = t;
             ats[i] = Math.Abs(t);
         }
