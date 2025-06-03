@@ -13,7 +13,7 @@ public static class Exam
         f64[] numerators = new f64[COUNT];
         numerators[0] = x;
 
-        f64[] denumerators = new f64[]
+        f64[] denominator = new f64[]
         {
             1.0,
             -1.0 / 3,
@@ -46,7 +46,7 @@ public static class Exam
 
         for (i32 i = 0; i < COUNT; ++i)
         {
-            f64 t = numerators[i] * denumerators[i];
+            f64 t = numerators[i] * denominator[i];
             ts[i] = t;
             ats[i] = Math.Abs(t);
         }
@@ -57,19 +57,17 @@ public static class Exam
         /*---*/
 
         f64 xError = x * U;
-        f64 x2Error = x2 * 2 * U / (1 - 2 * U);
+        f64 x2Error = x2 * 3 * U / (1 - 2 * U);
 
         f64 numError = 0;
         for (i32 i = 0; i < COUNT; ++i)
         {
-            numError += Math.Abs(numerators[i]) * Gamma(i);
-            /*numError += Math.Abs(numerators[i]) * Gamma(i) * U;*/
+            numError += Math.Abs(numerators[i]) * Gamma(1 + 4 * i);
         }
 
-        f64 denumError = denumerators.Sum(a => Math.Abs(a)) * U;
-        f64 roundError = absSum * U;
+        f64 roundError = absSum * Gamma(4);
 
-        f64 repError = xError + x2Error + numError + denumError + roundError;
+        f64 repError = xError + x2Error + numError + roundError;
 
         /*---*/
 
@@ -96,7 +94,7 @@ public static class Exam
 
         f64 computed = 16 * x1Atan - 4 * x2Atan;
 
-        f64 finalErr = computed * 2 * U;
+        f64 finalErr = computed * U;
         f64 error = x1Err + x2Err + finalErr;
 
         /*Console.WriteLine("Nums : 0.123456789abcdef0123456789abcdef");*/
