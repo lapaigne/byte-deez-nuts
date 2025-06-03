@@ -57,17 +57,16 @@ public static class Exam
         /*---*/
 
         f64 xError = x * U;
-        f64 x2Error = x2 * 3 * U / (1 - 2 * U);
 
         f64 numError = 0;
         for (i32 i = 0; i < COUNT; ++i)
         {
-            numError += Math.Abs(numerators[i]) * Gamma(1 + 4 * i);
+            numError += ats[i] * Gamma(1 + 4 * i);
         }
 
         f64 roundError = absSum * Gamma(4);
 
-        f64 repError = xError + x2Error + numError + roundError;
+        f64 repError = xError + numError + roundError;
 
         /*---*/
 
@@ -106,16 +105,6 @@ public static class Exam
     public static f64 Gamma(i32 n)
     {
         return n * U / (1.0 - n * U);
-    }
-
-    public static f64 Ulp(f64 value)
-    {
-        if (f64.IsNaN(value)) return f64.NaN;
-        if (f64.IsInfinity(value)) return f64.PositiveInfinity;
-        if (Math.Abs(value) == f64.MaxValue) return f64.Epsilon * f64.MaxValue * 2;
-        if (Math.Abs(value) == 0 || Math.Abs(value) < f64.MinValue) return f64.Epsilon;
-        f64 nextValue = value > 0 ? f64.BitIncrement(value) : f64.BitDecrement(value);
-        return Math.Abs(nextValue - value);
     }
 
     public static f64 PairwiseSum(this List<f64> numbers)
