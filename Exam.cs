@@ -57,13 +57,13 @@ public static class Exam
         /*---*/
 
         f64 xError = x * U;
-        f64 x2Error = x2 * 2 * U / (1 - 4 * U);
+        f64 x2Error = x2 * 2 * U / (1 - 2 * U);
 
         f64 numError = 0;
         for (i32 i = 0; i < COUNT; ++i)
         {
-            // ???
-            numError += Math.Abs(numerators[i]) * Gamma(i) * U;
+            numError += Math.Abs(numerators[i]) * Gamma(i);
+            /*numError += Math.Abs(numerators[i]) * Gamma(i) * U;*/
         }
 
         f64 denumError = denumerators.Sum(a => Math.Abs(a)) * U;
